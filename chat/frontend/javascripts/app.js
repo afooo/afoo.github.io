@@ -9,7 +9,7 @@ var app = app || {};
 **/
 app.Message = Backbone.Model.extend({
     url: function() {
-         return 'http://phone-karate.codio.io:3000/start';
+         return 'http://alwaysladylove.com/start';
     },
     defaults: {
         data: []
@@ -19,7 +19,7 @@ app.Message = Backbone.Model.extend({
 app.SubmitMessage = Backbone.Model.extend({
     // data source
     url: function() {
-        return 'http://phone-karate.codio.io:3000/send/' + this.get('message');
+        return 'http://alwaysladylove.com/send/' + this.get('message');
     },
     defaults: {
         message: ''
@@ -65,23 +65,23 @@ app.MessageView = Backbone.View.extend({
            }
         }
         
-         // Let us open a web socket
-         ws = new WebSocket("ws://phone-karate.codio.io:3000/start", ['echo-protocol']);
-         ws.onopen = function()
-         {
-             div.append("<h2>Done</h2>");
-         };
+        // Let us open a web socket
+        ws = new WebSocket("ws://alwaysladylove.com/start", ['echo-protocol']);
+        ws.onopen = function()
+        {
+            div.append("<h2>Done</h2>");
+        };
 
-         ws.onmessage = onWsMessage;
+        ws.onmessage = onWsMessage;
 
-         ws.onclose = function()
-         { 
+        ws.onclose = function()
+        { 
             div.append("<h2>Closed</h2>");
-         };
-         ws.onerror = function()
-         { 
+        };
+        ws.onerror = function()
+        { 
             div.html("<h1>error</h1>");
-         };  
+        };  
     }
 });
 
